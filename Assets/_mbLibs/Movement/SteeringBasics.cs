@@ -9,6 +9,7 @@ public class SteeringBasics : MonoBehaviour {
 	public float maxAcceleration = 10f;
 	public float targetRadius = 0.0005f;
 	public float slowRadius = 1f;
+	//The time in which we want to achieve the targetSpeed 
 	public float timeToTarget = 0.1f;
 	public float turnSpeed = 20f;
 	private Rigidbody2D rb;
@@ -29,9 +30,15 @@ public class SteeringBasics : MonoBehaviour {
 			rb.velocity = rb.velocity.normalized * maxVelocity;
 		}
 	}
+	public Vector2 GetTransformV2(){
+		return GetTransformV2(this.transform);
+	}
+	public Vector2 GetTransformV2(Transform t){
+		return new Vector2(t.position.x, t.position.y);
+	}
 	// Note: A seek steering behavior. Wiill return the steering for the current game object to seek a given position
 	public Vector2 seek(Vector2 targetPosition, float maxSeekAccel){
-		Vector2 transformPos = new Vector2(transform.position.x, transform.position.y);
+		Vector2 transformPos = GetTransformV2();
 		// Note: Get the direction
 		Vector2 acceleration = targetPosition - transformPos;
 		
@@ -81,6 +88,81 @@ public class SteeringBasics : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(0,0,rotation);
 	}
 
+	public Vector2 arrive(Vector2 targetPosition){
+		//Note: Get the right direction for the linear acceleration
+		Vector2 targetVelocity = targetPosition - GetTransformV2();
+
+		//Note:Get the distance to the target
+		float dist = targetVelocity.magnitude;
+
+		//Note:if we are within stopping radius stop
+		if(dist < targetRadius){
+			rb.velocity = Vector2.zero;
+			return Vector2.zero;
+		}
+
+		//Note:Calculate the target speed, full speed at slowRadius and 0 speed at 0 distance
+		float targetSpeed;
+		if(dist > slowRadius){
+			targetSpeed = maxVelocity;
+		} else {
+			targetSpeed = maxVelocity * (dist/slowRadius);
+		}
+
+		//Note: Give target velocity the correct speed
+		targetVelocity.Normalize();
+		targetVelocity *= targetSpeed;
+
+		//Calculate the linear acceleration we want
+		Vector2 acceleration = targetVelocity - rb.velocity;
+
+		/*
+		 Rather than accelerate the character to the correct speed in 1 second, 
+		 accelerate so we reach the desired speed in timeToTarget seconds 
+		 (if we were to actually accelerate for the full timeToTarget seconds).
+		*/
+		acceleration *= 1/timeToTarget;
+
+		//Make sure we are accelerating at max acceleration
+		if(acceleration.magnitude > maxAcceleration){
+			acceleration.Normalize();
+			acceleration *= maxAcceleration;
+		}
+
+		return acceleration;
+	}
+
+	public Vector2 interpose(Rigidbody2D target1, Rigidbody2D target2){
+		Vector2 midPoint = (target1.position + target2.position) / 2f;
+		float timeToReachMidPoint = Vector2.Distance(midPoint, GetTransformV2()) / maxVelocity; 
+		Vector2 futureTarget1Pos = target1.position + target1.velocity * timeToReachMidPoint;
+		Vector2 futureTarget2Pos = target2.position + target2.velocity * timeToReachMidPoint;
+
+		midPoint = (futureTarget1Pos + futureTarget2Pos) / 2;
+
+		return arrive(midPoint);
+	}
+
+	/* Checks to see if the target is in front of the character */
+	public bool isInFront(Vector2 targetPos)
+	{
+			return isFacing(targetPos, 0);
+	}
+
+	public bool isFacing(Vector2 targetPos, float cosineValue) { 
+			rb.rotation
+
+			Vector2 directionToTarget = (targetPos - GetTransformV2());
+			directionToTarget.Normalize();
+
+			return Vector2.Dot(facing, directionToTarget) >= cosineValue;
+	}
+
+	public static float getBoundingRadius(Transform t)
+	{
+			SphereCollider col = t.GetComponent<SphereCollider>();
+			return Mathf.Max(t.localScale.x, t.localScale.y, t.localScale.z) * col.radius;
+	}
 	// Update is called once per frame
 	void Update () {
 		
