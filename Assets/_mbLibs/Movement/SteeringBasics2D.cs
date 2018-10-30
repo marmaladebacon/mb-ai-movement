@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class SteeringBasics : MonoBehaviour {
+public class SteeringBasics2D : MonoBehaviour {
 
 	public float maxVelocity = 3.5f;
 	public float maxAcceleration = 10f;
@@ -149,18 +149,23 @@ public class SteeringBasics : MonoBehaviour {
 			return isFacing(targetPos, 0);
 	}
 
+	//cosineValue is in radians, also \|/  if the middle line is the direction of facing, the cosineVal is just one side eg \|
 	public bool isFacing(Vector2 targetPos, float cosineValue) { 
-			rb.rotation
-
+			float degree = rb.rotation;
+			Vector2 facing = new Vector2(Mathf.Cos(degree * Mathf.Deg2Rad), Mathf.Sin(degree * Mathf.Deg2Rad));
+			
 			Vector2 directionToTarget = (targetPos - GetTransformV2());
+			
 			directionToTarget.Normalize();
+			float dot = Vector2.Dot(facing, directionToTarget);
+			//Debug.Log(facing +" vs " + directionToTarget + " = " + dot + " to " + cosineValue);
 
-			return Vector2.Dot(facing, directionToTarget) >= cosineValue;
+			return  dot >= cosineValue;
 	}
 
 	public static float getBoundingRadius(Transform t)
 	{
-			SphereCollider col = t.GetComponent<SphereCollider>();
+			CircleCollider2D col = t.GetComponent<CircleCollider2D>();
 			return Mathf.Max(t.localScale.x, t.localScale.y, t.localScale.z) * col.radius;
 	}
 	// Update is called once per frame
