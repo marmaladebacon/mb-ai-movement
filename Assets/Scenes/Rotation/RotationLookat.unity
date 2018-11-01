@@ -415,6 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1792934230}
   - component: {fileID: 1792934229}
+  - component: {fileID: 1792934232}
   - component: {fileID: 1792934227}
   - component: {fileID: 1792934231}
   - component: {fileID: 1792934228}
@@ -451,7 +452,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1792934226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a60605c66f0feae40a2330af8391b92d, type: 3}
   m_Name: 
@@ -537,6 +538,20 @@ MonoBehaviour:
   turnSpeed: 20
   smoothing: 1
   numSamplesForSmoothing: 5
+--- !u!114 &1792934232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1792934226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab964b131a197546a9a3e3699cbff7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderOffset: 1.5
+  wanderRadius: 4
+  wanderRate: 0.4
 --- !u!1 &1911126456
 GameObject:
   m_ObjectHideFlags: 0
