@@ -18,6 +18,12 @@ public class FlockingUnit1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+	
+	/// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+	/// </summary>
+	void FixedUpdate()
+	{
 		Vector2 accel = flocking.getSteering(nearSensor.targets);
 		steeringBasics2D.steer(accel);
     steeringBasics2D.lookWhereYouAreGoing();

@@ -7,6 +7,8 @@ namespace marmaladebacon.movement2d {
 
 		public float maxVelocity = 3.5f;
 		public float maxAcceleration = 10f;
+		public float maxVelocityWithExternal = 6f;
+		public float maxAccelerationWithExternal = 25f;
 		public float targetRadius = 0.0005f;
 		public float slowRadius = 1f;
 		//The time in which we want to achieve the targetSpeed 
@@ -30,6 +32,21 @@ namespace marmaladebacon.movement2d {
 				rb.velocity = rb.velocity.normalized * maxVelocity;
 			}
 		}
+		Vector2 externalForceStore = Vector2.zero;
+		public void externalForce(Vector2 linearAcceleration){
+			if(linearAcceleration == Vector2.zero){
+				externalForceStore *= 0.95f;
+				if(externalForceStore.magnitude  < 0.01f){
+					externalForceStore = Vector2.zero;
+				}
+			}else{
+				externalForceStore += linearAcceleration * Time.deltaTime;
+				if(externalForceStore.magnitude > maxVelocityWithExternal){
+					externalForceStore = externalForceStore.normalized * maxVelocityWithExternal;
+				}
+				rb.velocity += externalForceStore;
+			}
+		}
 		public Vector2 GetTransformV2(){
 			return SteeringBasics2D.GetTransformV2(this.transform);
 		}
@@ -37,7 +54,7 @@ namespace marmaladebacon.movement2d {
 			return new Vector2(t.position.x, t.position.y);
 		}
 		
-		// Note: A seek steering behavior. Wiill return the steering for the current game object to seek a given position
+		// Note: A seek steering behavior. Will return the steering for the current game object to seek a given position
 		public Vector2 seek(Vector2 targetPosition, float maxSeekAccel){
 			Vector2 transformPos = GetTransformV2();
 			// Note: Get the direction

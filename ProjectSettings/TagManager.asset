@@ -16,7 +16,7 @@ TagManager:
   - PostProcessing
   - mb2dSensors
   - mb2dScreenBoundary
-  - 
+  - mb2dTiles
   - 
   - 
   - 
@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Tiles
+    uniqueID: 2936560115
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
