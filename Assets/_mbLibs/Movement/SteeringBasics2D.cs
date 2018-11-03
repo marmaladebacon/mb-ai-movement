@@ -165,12 +165,12 @@ namespace marmaladebacon.movement2d {
 
 		public static float getBoundingRadius(Transform t)
 		{
-				CircleCollider2D col = t.GetComponent<CircleCollider2D>();
-				return Mathf.Max(t.localScale.x, t.localScale.y, t.localScale.z) * col.radius;
+			CircleCollider2D col = t.GetComponent<CircleCollider2D>();
+			return Mathf.Max(t.localScale.x, t.localScale.y, t.localScale.z) * col.radius;
 		}
 		// Update is called once per frame
 		void Update () {
-			
+				
 		}
 	}
 
