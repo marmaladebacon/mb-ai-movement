@@ -25,7 +25,7 @@ namespace marmaladebacon.movement2d {
 			float targetOrientation = wanderOrientation + characterOrientation;
 			
 			/* Calculate the center of the wander circle */
-			Vector2 targetPosition = steeringBasics.GetTransformV2(this.transform) + (orientationToVector(characterOrientation) * wanderOffset);
+			Vector2 targetPosition = SteeringBasics2D.GetTransformV2(this.transform) + (orientationToVector(characterOrientation) * wanderOffset);
 
 			/* Calculate the target position */
 			targetPosition = targetPosition + (orientationToVector(targetOrientation) * wanderRadius);

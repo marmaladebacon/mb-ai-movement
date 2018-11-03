@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -342,11 +342,11 @@ GameObject:
   - component: {fileID: 724716087}
   - component: {fileID: 724716086}
   - component: {fileID: 724716085}
+  - component: {fileID: 724716082}
   - component: {fileID: 724716084}
   - component: {fileID: 724716083}
-  - component: {fileID: 724716082}
   m_Layer: 0
-  m_Name: TestSprite (1)
+  m_Name: Wander2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 724716081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61ce3b0f033d770409ef5e74646fca7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dadf01e27751a3419c888562714a559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &724716084
@@ -396,12 +396,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 724716081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cab964b131a197546a9a3e3699cbff7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 23e17a4e133336c4ca84ce3e1fd749f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderOffset: 1.5
-  wanderRadius: 2
-  wanderRate: 2
+  wanderRadius: 1.2
+  wanderDistance: 2
+  wanderJitter: 40
 --- !u!114 &724716085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 1792934228}
   - component: {fileID: 1792934232}
   m_Layer: 0
-  m_Name: TestSprite
+  m_Name: Wander1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

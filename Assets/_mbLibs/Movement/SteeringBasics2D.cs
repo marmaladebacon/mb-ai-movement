@@ -31,11 +31,12 @@ namespace marmaladebacon.movement2d {
 			}
 		}
 		public Vector2 GetTransformV2(){
-			return GetTransformV2(this.transform);
+			return SteeringBasics2D.GetTransformV2(this.transform);
 		}
-		public Vector2 GetTransformV2(Transform t){
+		public static Vector2 GetTransformV2(Transform t){
 			return new Vector2(t.position.x, t.position.y);
 		}
+		
 		// Note: A seek steering behavior. Wiill return the steering for the current game object to seek a given position
 		public Vector2 seek(Vector2 targetPosition, float maxSeekAccel){
 			Vector2 transformPos = GetTransformV2();
@@ -88,6 +89,7 @@ namespace marmaladebacon.movement2d {
 			transform.rotation = Quaternion.Euler(0,0,rotation);
 		}
 
+		//Returns the acceleration needed to arrive at the location
 		public Vector2 arrive(Vector2 targetPosition){
 			//Note: Get the right direction for the linear acceleration
 			Vector2 targetVelocity = targetPosition - GetTransformV2();

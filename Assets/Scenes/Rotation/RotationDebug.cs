@@ -15,6 +15,6 @@ public class RotationDebug : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log("facing:"+ steeringBasics.isFacing(steeringBasics.GetTransformV2(targetToLookAt),Mathf.Cos( 45f * Mathf.Deg2Rad)) );
+		Debug.Log("facing:"+ steeringBasics.isFacing(SteeringBasics2D.GetTransformV2(targetToLookAt),Mathf.Cos( 45f * Mathf.Deg2Rad)) );
 	}
 }

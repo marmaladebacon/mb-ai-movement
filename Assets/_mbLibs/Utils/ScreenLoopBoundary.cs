@@ -25,7 +25,7 @@ public class ScreenLoopBoundary : MonoBehaviour {
     void OnTriggerStay2D(Collider2D other)
     {
       Transform t = other.transform;
-      Debug.Log(t.gameObject.name);
+      //Debug.Log(t.gameObject.name);
       if (t.position.x < bottomLeft.x)
       {
           t.position = new Vector3(t.position.x + widthHeight.x, t.position.y, t.position.z);
