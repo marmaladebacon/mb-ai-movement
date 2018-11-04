@@ -15,6 +15,7 @@ public class FlockAndTileUnit1 : MonoBehaviour {
 	private Flocking flocking;
 	private NearSensor nearSensor;
 	private ExtForces extForces;
+	private WallAvoidance wallAvoidance;
 	private SteeringBasics2D steeringBasics2D;
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,7 @@ public class FlockAndTileUnit1 : MonoBehaviour {
 		flocking = GetComponent<Flocking>();
 		nearSensor = transform.Find("Sensor").GetComponent<NearSensor>();
 		extForces = GetComponent<ExtForces>();
+		wallAvoidance = GetComponent<WallAvoidance>();
 		steeringBasics2D = GetComponent<SteeringBasics2D>();
 	}
 	
@@ -42,10 +44,13 @@ public class FlockAndTileUnit1 : MonoBehaviour {
 		Vector2 accel = Vector2.zero;
 		Vector2 flockAccel = flocking.getSteering(nearSensor.targets) * flockingWeight;
 		Vector2 tileAccel = tileInfluence.getSteering() * tileInfluenceWeight;
-
-		accel += flockAccel;		
+		Vector2 avoidWallAccel = wallAvoidance.getSteering();		
+		accel += flockAccel;
+		accel += avoidWallAccel;
+		Debug.Log("Avoid wall accel:" + avoidWallAccel);		
 		steeringBasics2D.steer(accel);
-    steeringBasics2D.lookWhereYouAreGoing();
-		steeringBasics2D.externalForce(tileAccel);
+    
+		steeringBasics2D.groundInfluence(tileAccel);
+		steeringBasics2D.lookWhereYouAreGoing();
 	}
 }

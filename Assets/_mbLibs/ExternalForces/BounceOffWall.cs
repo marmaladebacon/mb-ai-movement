@@ -26,7 +26,7 @@ public class BounceOffWall : MonoBehaviour {
 		
 		var t = other.collider.GetComponent<ExtForces>();
 		Debug.Log("Getting collision");
-		if(t!=null){
+		if(t!=null && !t.isExternalForcesActive){
 			Vector2 temp = new Vector2(transform.position.x, transform.position.y);
 			Vector2 p2 = temp - other.GetContact(0).point;			
 			Vector2 vel = p2.normalized * forceMagnitude;

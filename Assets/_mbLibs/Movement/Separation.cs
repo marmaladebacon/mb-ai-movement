@@ -5,12 +5,12 @@ namespace marmaladebacon.movement2d {
 	public class Separation : MonoBehaviour {
 
 		 /* The maximum acceleration for separation */
-    public float sepMaxAcceleration = 25;
+    public float sepMaxAcceleration = 10;
 
     /* This should be the maximum separation distance possible between a separation
      * target and the character.
      * So it should be: separation sensor radius + max target radius */
-    public float maxSepDist = 1f;
+    public float maxSepDist = 2.5f;
 
 		private float boundingRadius;
 		void Start () {

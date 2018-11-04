@@ -5,10 +5,10 @@ namespace marmaladebacon.movement2d {
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class SteeringBasics2D : MonoBehaviour {
 
-		public float maxVelocity = 3.5f;
-		public float maxAcceleration = 10f;
-		public float maxVelocityWithExternal = 6f;
-		public float maxAccelerationWithExternal = 25f;
+		public float maxVelocity = 2.5f;
+		public float maxAcceleration = 6.67f;
+		public float maxVelocityWithExternal = 1.5f;
+		public float maxAccelerationWithExternal = 8f;
 		public float targetRadius = 0.0005f;
 		public float slowRadius = 1f;
 		//The time in which we want to achieve the targetSpeed 
@@ -32,19 +32,19 @@ namespace marmaladebacon.movement2d {
 				rb.velocity = rb.velocity.normalized * maxVelocity;
 			}
 		}
-		Vector2 externalForceStore = Vector2.zero;
-		public void externalForce(Vector2 linearAcceleration){
+		Vector2 groundInfluenceValue = Vector2.zero;
+		public void groundInfluence(Vector2 linearAcceleration){
 			if(linearAcceleration == Vector2.zero){
-				externalForceStore *= 0.95f;
-				if(externalForceStore.magnitude  < 0.01f){
-					externalForceStore = Vector2.zero;
+				groundInfluenceValue *= 0.95f;
+				if(groundInfluenceValue.magnitude  < 0.01f){
+					groundInfluenceValue = Vector2.zero;
 				}
 			}else{
-				externalForceStore += linearAcceleration * Time.deltaTime;
-				if(externalForceStore.magnitude > maxVelocityWithExternal){
-					externalForceStore = externalForceStore.normalized * maxVelocityWithExternal;
+				groundInfluenceValue += linearAcceleration * Time.deltaTime;
+				if(groundInfluenceValue.magnitude > maxVelocityWithExternal){
+					groundInfluenceValue = groundInfluenceValue.normalized * maxVelocityWithExternal;
 				}
-				rb.velocity += externalForceStore;
+				rb.velocity += groundInfluenceValue;
 			}
 		}
 		public Vector2 GetTransformV2(){
@@ -184,8 +184,11 @@ namespace marmaladebacon.movement2d {
 
 		public static float getBoundingRadius(Transform t)
 		{
-			CircleCollider2D col = t.GetComponent<CircleCollider2D>();
-			return Mathf.Max(t.localScale.x, t.localScale.y, t.localScale.z) * col.radius;
+			Collider2D collider = t.GetComponent<Collider2D>();
+			float radius = collider.bounds.size.x / 2f;
+			
+			//CircleCollider2D col = t.GetComponent<CircleCollider2D>();
+			return Mathf.Max(t.localScale.x, t.localScale.y, t.localScale.z) * radius;
 		}
 		// Update is called once per frame
 		void Update () {

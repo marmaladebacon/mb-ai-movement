@@ -122,9 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 14411748}
   - component: {fileID: 14411747}
-  - component: {fileID: 14411749}
   - component: {fileID: 14411750}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Wall(3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,19 +168,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &14411749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 14411746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a67b9bad83d3104fbcdce500cdd88d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceMagnitude: 30
-  inactiveTime: 1.5
 --- !u!50 &14411750
 Rigidbody2D:
   serializedVersion: 4
@@ -566,9 +552,8 @@ GameObject:
   m_Component:
   - component: {fileID: 629171931}
   - component: {fileID: 629171930}
-  - component: {fileID: 629171932}
   - component: {fileID: 629171933}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,19 +598,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &629171932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 629171929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a67b9bad83d3104fbcdce500cdd88d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceMagnitude: 30
-  inactiveTime: 1.5
 --- !u!50 &629171933
 Rigidbody2D:
   serializedVersion: 4
@@ -1234,9 +1206,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1369361047}
   - component: {fileID: 1369361046}
-  - component: {fileID: 1369361048}
   - component: {fileID: 1369361049}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Wall(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1281,19 +1252,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1369361048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1369361045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a67b9bad83d3104fbcdce500cdd88d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceMagnitude: 30
-  inactiveTime: 1.5
 --- !u!50 &1369361049
 Rigidbody2D:
   serializedVersion: 4
@@ -1576,9 +1534,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1622624194}
   - component: {fileID: 1622624193}
-  - component: {fileID: 1622624195}
   - component: {fileID: 1622624196}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Wall(2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1623,19 +1580,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &1622624195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1622624192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a67b9bad83d3104fbcdce500cdd88d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceMagnitude: 30
-  inactiveTime: 1.5
 --- !u!50 &1622624196
 Rigidbody2D:
   serializedVersion: 4
@@ -1667,7 +1611,6 @@ GameObject:
   - component: {fileID: 1792934229}
   - component: {fileID: 1792934227}
   - component: {fileID: 1792934231}
-  - component: {fileID: 1792934234}
   - component: {fileID: 1792934237}
   - component: {fileID: 1792934236}
   - component: {fileID: 1792934235}
@@ -1676,6 +1619,8 @@ GameObject:
   - component: {fileID: 1792934238}
   - component: {fileID: 1792934228}
   - component: {fileID: 1792934239}
+  - component: {fileID: 1792934240}
+  - component: {fileID: 1792934234}
   m_Layer: 0
   m_Name: TestSprite
   m_TagString: Untagged
@@ -1840,7 +1785,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.5
 --- !u!114 &1792934235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1906,6 +1851,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExternalForcesActive: 0
   timeActive: 0
+--- !u!114 &1792934240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1792934226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683eff7fecb2f794294c482fb39317d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMaskToUse:
+    serializedVersion: 2
+    m_Bits: 8192
+  mainWhiskerLen: 3
+  wallAvoidDistance: 2
+  sideWhiskerLen: 2
+  sideWhiskerAngle: 45
+  maxAcceleration: 60
 --- !u!1 &1832343581
 GameObject:
   m_ObjectHideFlags: 0
