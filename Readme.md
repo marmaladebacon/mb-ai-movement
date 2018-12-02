@@ -6,5 +6,6 @@ Under Assets/_mbLibs/mbAiMovement/Examples/Scenes, there are several examples th
 In the "Moving Tiles" example, left mouse clicks toggle the direction of the tiles, while right mouse clicks create a small pulse that pushes entities away from itself.
 Currently I'm developing a game that uses these 2 features here: https://marmaladebacon.com/#/projects/herding-cats
 
-
+ ## License
+See LICENSE.md
 
